@@ -101,9 +101,13 @@
         body {
             min-height: 100vh;
             font-family: 'Work Sans', sans-serif;
+            scroll-behavior: smooth;
         }
         .font-newsreader {
             font-family: 'Newsreader', serif;
+        }
+        .text-shadow-md {
+            text-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
@@ -117,8 +121,10 @@
                 <span class="font-newsreader text-2xl font-bold tracking-tight text-primary">Las Güelas</span>
             </div>
             <div class="hidden md:flex items-center gap-8">
+                <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="text-on-surface hover:text-primary font-medium transition-colors">Inicio</button>
+                <button onclick="document.getElementById('historia').scrollIntoView({behavior: 'smooth'})" class="text-on-surface hover:text-primary font-medium transition-colors">Historia</button>
                 <button onclick="openMenuModal()" class="text-on-surface hover:text-primary font-medium transition-colors">Ver Carta</button>
-                <button onclick="openLocationsModal()" class="text-on-surface hover:text-primary font-medium transition-colors">Nuestros Locales</button>
+                <button onclick="document.getElementById('locales').scrollIntoView({behavior: 'smooth'})" class="text-on-surface hover:text-primary font-medium transition-colors">Locales</button>
             </div>
             <button onclick="openBookingModal()" class="bg-primary text-on-primary hover:bg-primary/90 transition-all duration-300 rounded-lg px-5 py-2.5 font-semibold text-sm flex items-center gap-2 shadow-sm active:scale-95">
                 <span class="material-symbols-outlined text-lg">event_available</span>
@@ -129,13 +135,13 @@
 
     <main>
         <!-- Hero Section -->
-        <section class="relative h-[650px] w-full flex items-center justify-center grain-overlay overflow-hidden">
+        <section id="inicio" class="relative h-[650px] w-full flex items-center justify-center grain-overlay overflow-hidden">
             <div class="absolute inset-0 bg-cover bg-center transition-transform duration-10000 scale-105" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDf_JBudBhoyoHe5VfSbbjhR-4N9o0a1UPbAWIQDFeEV7uC7c8ovUYpRFDB5uvLxyhjQjR0VvJAuuT0_2K_TDLToDtAWkeaeguUUF28GDchEqrTogcjsG1UWZ0uBKH7EqHqeR0Mmr97C9tp1n-zs_heMVP2Mvag0Nnhp0GPLNwJHAtTgahr4GOM9Df4QyodLu-vDG3QrUY8r2I0wnvWXZF2vmwQ-uYoOQItxD1T-LaP4VEaIEaerEaQoRqxMZytjxOBqdcKFc93nP8b')">
-                <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+                <div class="absolute inset-0 bg-black/45 backdrop-blur-[1px]"></div>
             </div>
             <div class="relative z-10 text-center px-margin-mobile md:px-margin-desktop max-w-3xl mx-auto flex flex-col items-center">
-                <h1 class="font-newsreader text-4xl md:text-6xl text-surface-bright mb-6 drop-shadow-md font-semibold leading-tight">La sidra y la cocina de tu güela</h1>
-                <p class="text-lg md:text-xl text-surface-variant/90 mb-10 max-w-xl text-balance font-light">Tradición y sabor en el corazón de Oviedo</p>
+                <h1 class="font-newsreader text-4xl md:text-6xl text-surface-bright mb-6 drop-shadow-md font-semibold leading-tight text-shadow-md">La sidra y la cocina de tu güela</h1>
+                <p class="text-lg md:text-xl text-surface-variant/90 mb-10 max-w-xl text-balance font-light">Tradición y sabor en el corazón de Oviedo. Cocinamos con recetas clásicas de Asturias.</p>
                 <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                     <button onclick="openBookingModal()" class="bg-primary text-on-primary hover:bg-primary/95 px-8 py-4 rounded-lg font-semibold text-base transition-all shadow-lg hover:shadow-primary/20 active:scale-95">
                         Reservar Mesa
@@ -152,49 +158,204 @@
             <div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row items-center justify-between gap-6">
                 <div class="flex items-center gap-4">
                     <div class="flex text-amber-500">
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star</span>
-                        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">star_half</span>
+                        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+                        <span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">star_half</span>
                     </div>
                     <div class="flex flex-col">
-                        <span class="font-bold text-on-surface">4.8 de valoración en Google</span>
-                        <span class="text-sm text-on-surface-variant">Más de 1,200 reseñas de clientes satisfechos</span>
+                        <span class="font-bold text-on-surface">4.8 de valoración Google</span>
+                        <span class="text-sm text-on-surface-variant">1200+ opiniones de comensales satisfechos</span>
                     </div>
                 </div>
                 <div class="flex bg-surface-container-high rounded-full p-1.5 border border-outline-variant/40 shadow-inner">
-                    <button onclick="openLocationsModal('gascona')" class="px-5 py-2 rounded-full text-sm font-semibold transition-all hover:text-primary active:scale-95">Gascona</button>
-                    <button onclick="openLocationsModal('florida')" class="px-5 py-2 rounded-full text-sm font-semibold transition-all hover:text-primary active:scale-95">La Florida</button>
-                    <button onclick="openLocationsModal('parrilla')" class="px-5 py-2 rounded-full text-sm font-semibold transition-all hover:text-primary active:scale-95">Parrilla</button>
+                    <button onclick="document.getElementById('locales').scrollIntoView({behavior: 'smooth'})" class="px-5 py-2 rounded-full text-sm font-semibold transition-all hover:text-primary flex items-center gap-1 active:scale-95">📍 Gascona</button>
+                    <button onclick="document.getElementById('locales').scrollIntoView({behavior: 'smooth'})" class="px-5 py-2 rounded-full text-sm font-semibold transition-all hover:text-primary flex items-center gap-1 active:scale-95">📍 La Florida</button>
+                    <button onclick="document.getElementById('locales').scrollIntoView({behavior: 'smooth'})" class="px-5 py-2 rounded-full text-sm font-semibold transition-all hover:text-primary flex items-center gap-1 active:scale-95">📍 Parrilla</button>
                 </div>
             </div>
         </section>
 
-        <!-- Presentation Section -->
-        <section class="py-16 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <span class="text-amber-600 font-semibold tracking-wider text-sm uppercase">Nuestra Esencia</span>
-                    <h2 class="font-newsreader text-3xl md:text-4xl text-primary font-bold mt-2 mb-6">Cocina casera con sabor a tradición</h2>
-                    <p class="text-on-surface-variant leading-relaxed mb-6">
-                        En **Las Güelas** recuperamos las recetas de nuestras abuelas para ofrecerte el auténtico sabor de la gastronomía asturiana. Desde nuestra fabada asturiana, cocinada a fuego lento, hasta nuestros cachopos crujientes y la sidra perfectamente escanciada.
+        <!-- Nuestra Historia Section -->
+        <section id="historia" class="py-16 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto text-center">
+            <span class="text-amber-600 font-semibold tracking-wider text-xs uppercase">Dos Generaciones</span>
+            <h2 class="font-newsreader text-3xl md:text-4xl text-primary font-bold mt-2 mb-4">Nuestra Historia</h2>
+            <p class="text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-12">
+                Dos generaciones de la familia con recetas tradicionales de cocina asturiana unidas en una sola mesa.
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Güela Maruja Card -->
+                <div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-8 flex flex-col items-center text-center space-y-4 hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-3xl">soup_kitchen</span>
+                    </div>
+                    <h3 class="font-newsreader text-xl font-bold text-primary">Güela Maruja</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                        La guardiana de las recetas centenarias. Sus manos preparaban con mimo y paciencia caldos que enamoraban a todos. Pasión por la sidra asturiana.
                     </p>
-                    <p class="text-on-surface-variant leading-relaxed mb-8">
-                        Disponemos de tres locales emblemáticos en Oviedo, cada uno con su propia atmósfera pero con el mismo compromiso con la calidad y el trato familiar.
+                </div>
+
+                <!-- Güela Pilar Card -->
+                <div class="bg-surface-container-lowest border border-outline-variant/50 rounded-xl p-8 flex flex-col items-center text-center space-y-4 hover:shadow-md transition-shadow">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+                        <span class="material-symbols-outlined text-3xl">restaurant</span>
+                    </div>
+                    <h3 class="font-newsreader text-xl font-bold text-primary">Güela Pilar</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">
+                        La cocinera de la casa. Puso toda su ilusión en llevar la cocina a la vanguardia sin perder la esencia tradicional.
                     </p>
-                    <div class="flex gap-4">
-                        <button onclick="openMenuModal()" class="border-2 border-secondary text-secondary hover:bg-secondary/5 px-6 py-3 rounded-lg font-semibold transition-colors active:scale-95">
-                            Explorar la Carta
-                        </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Platos Estrella Section -->
+        <section class="py-16 bg-surface-container-low px-margin-mobile md:px-margin-desktop">
+            <div class="max-w-max-width mx-auto text-center">
+                <span class="text-amber-600 font-semibold tracking-wider text-xs uppercase">Favoritos de la casa</span>
+                <h2 class="font-newsreader text-3xl md:text-4xl text-primary font-bold mt-2 mb-4">Platos Estrella</h2>
+                <p class="text-on-surface-variant max-w-xl mx-auto leading-relaxed mb-12">
+                    Lo mejor de nuestras cocinas
+                </p>
+
+                <!-- Cards Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+                    <!-- Cachopo -->
+                    <div class="relative h-[320px] rounded-xl overflow-hidden shadow-md group flex flex-col justify-end p-6 text-left text-white">
+                        <img src="cachopo.jpg" alt="Cachopo Tradicional" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                        <div class="relative z-10 space-y-1">
+                            <div class="flex justify-between items-end">
+                                <h4 class="font-newsreader text-lg font-bold">Cachopo Tradicional</h4>
+                                <span class="bg-amber-600/90 text-white font-bold text-xs px-2.5 py-1 rounded-md">16,50€</span>
+                            </div>
+                            <p class="text-xs text-white/80 line-clamp-2">Filete de ternera con jamón y queso de Vidiago.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fabada -->
+                    <div class="relative h-[320px] rounded-xl overflow-hidden shadow-md group flex flex-col justify-end p-6 text-left text-white">
+                        <img src="fabada.jpg" alt="Fabada Asturiana" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                        <div class="relative z-10 space-y-1">
+                            <div class="flex justify-between items-end">
+                                <h4 class="font-newsreader text-lg font-bold">Fabada Asturiana</h4>
+                                <span class="bg-amber-600/90 text-white font-bold text-xs px-2.5 py-1 rounded-md">15,00€</span>
+                            </div>
+                            <p class="text-xs text-white/80 line-clamp-2">El plato insignia de la región con compango.</p>
+                        </div>
+                    </div>
+
+                    <!-- Fritos de Pixín -->
+                    <div class="relative h-[320px] rounded-xl overflow-hidden shadow-md group flex flex-col justify-end p-6 text-left text-white">
+                        <img src="pixin.jpg" alt="Fritos de Pixín" class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
+                        <div class="relative z-10 space-y-1">
+                            <div class="flex justify-between items-end">
+                                <h4 class="font-newsreader text-lg font-bold">Fritos de Pixín</h4>
+                                <span class="bg-amber-600/90 text-white font-bold text-xs px-2.5 py-1 rounded-md">14,50€</span>
+                            </div>
+                            <p class="text-xs text-white/80 line-clamp-2">Crujientes bocados de pixín fresco con patatas.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="relative h-[400px] rounded-xl overflow-hidden shadow-md">
-                    <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDf_JBudBhoyoHe5VfSbbjhR-4N9o0a1UPbAWIQDFeEV7uC7c8ovUYpRFDB5uvLxyhjQjR0VvJAuuT0_2K_TDLToDtAWkeaeguUUF28GDchEqrTogcjsG1UWZ0uBKH7EqHqeR0Mmr97C9tp1n-zs_heMVP2Mvag0Nnhp0GPLNwJHAtTgahr4GOM9Df4QyodLu-vDG3QrUY8r2I0wnvWXZF2vmwQ-uYoOQItxD1T-LaP4VEaIEaerEaQoRqxMZytjxOBqdcKFc93nP8b" alt="Comida tradicional" class="w-full h-full object-cover">
+
+                <button onclick="openMenuModal()" class="mt-12 inline-block border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3.5 rounded-lg font-semibold text-sm transition-all duration-300 active:scale-95">
+                    Ver Carta Completa
+                </button>
+            </div>
+        </section>
+
+        <!-- Nuestros Locales Section -->
+        <section id="locales" class="py-16 px-margin-mobile md:px-margin-desktop">
+            <div class="max-w-max-width mx-auto text-center">
+                <span class="text-amber-600 font-semibold tracking-wider text-xs uppercase">Ven a vernos</span>
+                <h2 class="font-newsreader text-3xl md:text-4xl text-primary font-bold mt-2 mb-4">Nuestros Locales</h2>
+                <p class="text-on-surface-variant max-w-xl mx-auto leading-relaxed mb-12">
+                    Encuentra tu local favorito de la casa.
+                </p>
+
+                <!-- Locales Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto text-left">
+                    <!-- Gascona -->
+                    <div class="border border-outline-variant/60 rounded-xl overflow-hidden bg-surface-container-lowest transition-all hover:shadow-md flex flex-col">
+                        <div class="h-44 bg-surface-variant flex items-center justify-center text-outline-variant">
+                            <span class="material-symbols-outlined text-6xl">storefront</span>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <h4 class="font-newsreader text-xl font-bold text-primary">Las Güelas Gascona</h4>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">En el corazón del Boulevard de la Sidra, ambiente vibrante y tradicional.</p>
+                            </div>
+                            <div class="space-y-1.5 text-xs text-on-surface-variant pt-2 border-t border-outline-variant/30">
+                                <p>📍 Calle Gascona 12, Oviedo</p>
+                                <p>⏰ 12:00 - 16:30 | 20:00 - 00:00</p>
+                                <p>📞 985 12 34 56</p>
+                            </div>
+                            <button onclick="selectLocationAndBook('gascona')" class="w-full text-center bg-transparent border border-primary text-primary hover:bg-primary hover:text-white py-2.5 rounded-lg font-semibold text-xs transition-all active:scale-95">Reservar</button>
+                        </div>
+                    </div>
+
+                    <!-- La Florida -->
+                    <div class="border border-outline-variant/60 rounded-xl overflow-hidden bg-surface-container-lowest transition-all hover:shadow-md flex flex-col">
+                        <div class="h-44 bg-surface-variant flex items-center justify-center text-outline-variant">
+                            <span class="material-symbols-outlined text-6xl">groups</span>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <h4 class="font-newsreader text-xl font-bold text-primary">Las Güelas La Florida</h4>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Amplio, moderno y perfecto para familias y grupos grandes.</p>
+                            </div>
+                            <div class="space-y-1.5 text-xs text-on-surface-variant pt-2 border-t border-outline-variant/30">
+                                <p>📍 Paseo de la Florida 45, Oviedo</p>
+                                <p>⏰ 12:00 - 16:30 | 20:00 - 00:00</p>
+                                <p>📞 985 654 321</p>
+                            </div>
+                            <button onclick="selectLocationAndBook('florida')" class="w-full text-center bg-transparent border border-primary text-primary hover:bg-primary hover:text-white py-2.5 rounded-lg font-semibold text-xs transition-all active:scale-95">Reservar</button>
+                        </div>
+                    </div>
+
+                    <!-- Parrilla -->
+                    <div class="border border-outline-variant/60 rounded-xl overflow-hidden bg-surface-container-lowest transition-all hover:shadow-md flex flex-col">
+                        <div class="h-44 bg-surface-variant flex items-center justify-center text-outline-variant">
+                            <span class="material-symbols-outlined text-6xl">outdoor_grill</span>
+                        </div>
+                        <div class="p-6 flex-grow flex flex-col justify-between space-y-4">
+                            <div class="space-y-2">
+                                <h4 class="font-newsreader text-xl font-bold text-primary">Las Güelas Parrilla</h4>
+                                <p class="text-sm text-on-surface-variant leading-relaxed">Nuestra parrilla al carbón de encina y platos tradicionales.</p>
+                            </div>
+                            <div class="space-y-1.5 text-xs text-on-surface-variant pt-2 border-t border-outline-variant/30">
+                                <p>📍 Avda. Santander 89, Oviedo</p>
+                                <p>⏰ 12:00 - 16:30 | 20:00 - 00:00</p>
+                                <p>📞 985 987 654</p>
+                            </div>
+                            <button onclick="selectLocationAndBook('parrilla')" class="w-full text-center bg-transparent border border-primary text-primary hover:bg-primary hover:text-white py-2.5 rounded-lg font-semibold text-xs transition-all active:scale-95">Reservar</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#1e110a] text-surface-bright py-12 px-margin-mobile md:px-margin-desktop border-t border-primary/20">
+        <div class="max-w-max-width mx-auto flex flex-col items-center text-center space-y-6">
+            <div class="flex items-center gap-2 text-amber-500">
+                <span class="material-symbols-outlined text-3xl">restaurant_menu</span>
+                <span class="font-newsreader text-2xl font-bold tracking-tight">Las Güelas</span>
+            </div>
+            <p class="text-xs text-surface-variant/80 italic font-light">La auténtica sidrería asturiana</p>
+            <div class="flex gap-6 text-xs text-surface-variant font-medium">
+                <a href="#" class="hover:text-amber-500 transition-colors">Aviso Legal</a>
+                <a href="#" class="hover:text-amber-500 transition-colors">Privacidad</a>
+                <a href="#" onclick="openMenuModal(); return false;" class="hover:text-amber-500 transition-colors">Carta</a>
+                <a href="#" onclick="openBookingModal(); return false;" class="hover:text-amber-500 transition-colors">Contacto</a>
+            </div>
+            <p class="text-[10px] text-surface-variant/50 pt-4 border-t border-surface-variant/10 w-full max-w-md">© 2026 Las Güelas. Todos los derechos reservados.</p>
+        </div>
+    </footer>
 
     <!-- MODAL: RESERVA DE MESA -->
     <div id="booking-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
@@ -218,7 +379,7 @@
                     <select id="booking-location" required class="w-full bg-surface-container border border-outline-variant rounded-lg px-3.5 py-2.5 text-sm focus:border-primary focus:ring-1 focus:ring-primary">
                         <option value="gascona">Las Güelas - Calle Gascona (Boulevard de la Sidra)</option>
                         <option value="florida">Las Güelas - La Florida</option>
-                        <option value="parrilla">Las Güelas - Parrilla (Crta. Gijón)</option>
+                        <option value="parrilla">Las Güelas - Parrilla (Avda. Santander)</option>
                     </select>
                 </div>
 
@@ -338,7 +499,7 @@
                         <div class="flex justify-between items-baseline gap-2">
                             <span class="font-newsreader text-lg font-bold text-primary">Fabada Asturiana Tradicional</span>
                             <span class="flex-grow border-b border-dotted border-outline-variant/60 mx-2"></span>
-                            <span class="font-semibold text-secondary">16,50 €</span>
+                            <span class="font-semibold text-secondary">15,00 €</span>
                         </div>
                         <p class="text-sm text-on-surface-variant">Con su compango asturiano de aldea (chorizo, morcilla y lacón).</p>
                     </div>
@@ -374,9 +535,17 @@
                         <div class="flex justify-between items-baseline gap-2">
                             <span class="font-newsreader text-lg font-bold text-primary">Cachopo de Ternera Asturiana</span>
                             <span class="flex-grow border-b border-dotted border-outline-variant/60 mx-2"></span>
-                            <span class="font-semibold text-secondary">23,00 €</span>
+                            <span class="font-semibold text-secondary">16,50 €</span>
                         </div>
                         <p class="text-sm text-on-surface-variant">Relleno de jamón ibérico y queso de Vidiago, acompañado de patatas fritas caseras y pimientos de Padrón.</p>
+                    </div>
+                    <div class="space-y-1">
+                        <div class="flex justify-between items-baseline gap-2">
+                            <span class="font-newsreader text-lg font-bold text-primary">Fritos de Pixín Fresco</span>
+                            <span class="flex-grow border-b border-dotted border-outline-variant/60 mx-2"></span>
+                            <span class="font-semibold text-secondary">14,50 €</span>
+                        </div>
+                        <p class="text-sm text-on-surface-variant">Crujientes bocados de pixín (rape) fresco rebozados al estilo tradicional.</p>
                     </div>
                     <div class="space-y-1">
                         <div class="flex justify-between items-baseline gap-2">
@@ -385,14 +554,6 @@
                             <span class="font-semibold text-secondary">38,00 €</span>
                         </div>
                         <p class="text-sm text-on-surface-variant">Costillas, criollos, secreto ibérico y entraña de ternera asturiana a la brasa de encina.</p>
-                    </div>
-                    <div class="space-y-1">
-                        <div class="flex justify-between items-baseline gap-2">
-                            <span class="font-newsreader text-lg font-bold text-primary">Pescado del Cantábrico a la Espalda</span>
-                            <span class="flex-grow border-b border-dotted border-outline-variant/60 mx-2"></span>
-                            <span class="font-semibold text-secondary">22,00 €</span>
-                        </div>
-                        <p class="text-sm text-on-surface-variant">Pregunta a nuestro personal por la captura fresca del día.</p>
                     </div>
                 </div>
 
@@ -414,14 +575,6 @@
                         </div>
                         <p class="text-sm text-on-surface-variant">Empanadillas dulces fritas rellenas de nuez molida, azúcar y anís.</p>
                     </div>
-                    <div class="space-y-1">
-                        <div class="flex justify-between items-baseline gap-2">
-                            <span class="font-newsreader text-lg font-bold text-primary">Tarta de Queso de la Güela</span>
-                            <span class="flex-grow border-b border-dotted border-outline-variant/60 mx-2"></span>
-                            <span class="font-semibold text-secondary">6,00 €</span>
-                        </div>
-                        <p class="text-sm text-on-surface-variant">Tarta horneada súper cremosa con un toque de queso azul de la zona.</p>
-                    </div>
                 </div>
 
                 <!-- Bebidas Tab -->
@@ -441,13 +594,6 @@
                             <span class="font-semibold text-secondary">3,50 €</span>
                         </div>
                     </div>
-                    <div class="space-y-1">
-                        <div class="flex justify-between items-baseline gap-2">
-                            <span class="font-newsreader text-lg font-bold text-primary">Agua Mineral (1L)</span>
-                            <span class="flex-grow border-b border-dotted border-outline-variant/60 mx-2"></span>
-                            <span class="font-semibold text-secondary">3,00 €</span>
-                        </div>
-                    </div>
                 </div>
             </div>
             
@@ -455,76 +601,6 @@
             <div class="p-5 border-t border-outline-variant/40 bg-surface-container-low flex justify-end gap-3">
                 <button onclick="closeMenuModal()" class="px-5 py-2.5 border border-outline-variant rounded-lg font-semibold text-sm hover:bg-surface-variant transition-colors">Cerrar</button>
                 <button onclick="closeMenuModal(); openBookingModal();" class="bg-primary text-on-primary hover:bg-primary/95 px-5 py-2.5 rounded-lg font-semibold text-sm transition-colors">Reservar una Mesa</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- MODAL: LOCALES -->
-    <div id="locations-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
-        <div class="bg-surface w-full max-w-2xl rounded-xl shadow-2xl border border-outline-variant/40 overflow-hidden transform scale-95 transition-transform duration-300 flex flex-col max-h-[90vh]">
-            <!-- Header -->
-            <div class="bg-primary text-on-primary p-5 flex justify-between items-center">
-                <div class="flex items-center gap-2">
-                    <span class="material-symbols-outlined text-2xl">location_on</span>
-                    <h3 class="font-newsreader text-xl font-bold">Nuestros Locales</h3>
-                </div>
-                <button onclick="closeLocationsModal()" class="text-on-primary/80 hover:text-on-primary active:scale-90 transition-transform">
-                    <span class="material-symbols-outlined text-2xl">close</span>
-                </button>
-            </div>
-
-            <!-- Content -->
-            <div class="p-6 overflow-y-auto space-y-6 flex-grow">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <!-- Gascona -->
-                    <div id="card-local-gascona" class="border border-outline-variant/60 rounded-xl p-5 space-y-3 bg-surface-container-lowest transition-all hover:shadow-md">
-                        <div class="flex justify-between items-start">
-                            <h4 class="font-newsreader text-lg font-bold text-primary">Calle Gascona</h4>
-                            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded font-medium">Sidrería</span>
-                        </div>
-                        <p class="text-xs text-on-surface-variant">C. Gascona, 12, 33001 Oviedo, Asturias</p>
-                        <p class="text-xs text-on-surface-variant">📞 985 12 34 56</p>
-                        <p class="text-xs text-on-surface-variant">⏰ 12:00 - 00:00</p>
-                        <div class="pt-2 flex gap-2">
-                            <a href="https://maps.google.com" target="_blank" class="text-xs bg-surface-variant hover:bg-surface-variant/80 px-3 py-1.5 rounded font-semibold text-center flex-1">Ver Mapa</a>
-                            <button onclick="selectLocationAndBook('gascona')" class="text-xs bg-primary text-on-primary hover:bg-primary/95 px-3 py-1.5 rounded font-semibold text-center flex-1">Reservar</button>
-                        </div>
-                    </div>
-
-                    <!-- La Florida -->
-                    <div id="card-local-florida" class="border border-outline-variant/60 rounded-xl p-5 space-y-3 bg-surface-container-lowest transition-all hover:shadow-md">
-                        <div class="flex justify-between items-start">
-                            <h4 class="font-newsreader text-lg font-bold text-primary">La Florida</h4>
-                            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded font-medium">Familiar</span>
-                        </div>
-                        <p class="text-xs text-on-surface-variant">Paseo de la Florida, 45, 33012 Oviedo</p>
-                        <p class="text-xs text-on-surface-variant">📞 985 65 43 21</p>
-                        <p class="text-xs text-on-surface-variant">⏰ 12:00 - 00:00 (Lunes cerrado)</p>
-                        <div class="pt-2 flex gap-2">
-                            <a href="https://maps.google.com" target="_blank" class="text-xs bg-surface-variant hover:bg-surface-variant/80 px-3 py-1.5 rounded font-semibold text-center flex-1">Ver Mapa</a>
-                            <button onclick="selectLocationAndBook('florida')" class="text-xs bg-primary text-on-primary hover:bg-primary/95 px-3 py-1.5 rounded font-semibold text-center flex-1">Reservar</button>
-                        </div>
-                    </div>
-
-                    <!-- Parrilla -->
-                    <div id="card-local-parrilla" class="border border-outline-variant/60 rounded-xl p-5 space-y-3 bg-surface-container-lowest transition-all hover:shadow-md">
-                        <div class="flex justify-between items-start">
-                            <h4 class="font-newsreader text-lg font-bold text-primary">La Parrilla</h4>
-                            <span class="bg-amber-100 text-amber-800 text-xs px-2 py-0.5 rounded font-medium">Brasa</span>
-                        </div>
-                        <p class="text-xs text-on-surface-variant">Ctra. de Gijón, Km 2, 33011 Oviedo</p>
-                        <p class="text-xs text-on-surface-variant">📞 985 98 76 54</p>
-                        <p class="text-xs text-on-surface-variant">⏰ 13:00 - 16:30 / 20:00 - 00:00</p>
-                        <div class="pt-2 flex gap-2">
-                            <a href="https://maps.google.com" target="_blank" class="text-xs bg-surface-variant hover:bg-surface-variant/80 px-3 py-1.5 rounded font-semibold text-center flex-1">Ver Mapa</a>
-                            <button onclick="selectLocationAndBook('parrilla')" class="text-xs bg-primary text-on-primary hover:bg-primary/95 px-3 py-1.5 rounded font-semibold text-center flex-1">Reservar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="p-5 border-t border-outline-variant/40 bg-surface-container-low flex justify-end">
-                <button onclick="closeLocationsModal()" class="px-5 py-2.5 border border-outline-variant rounded-lg font-semibold text-sm hover:bg-surface-variant transition-colors">Cerrar</button>
             </div>
         </div>
     </div>
@@ -540,7 +616,7 @@
                 <span class="material-symbols-outlined text-2xl mb-0.5" data-icon="menu_book">menu_book</span>
                 <span class="text-[10px] font-semibold">Carta</span>
             </button>
-            <button onclick="openLocationsModal()" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary flex-1 py-1 transition-colors">
+            <button onclick="document.getElementById('locales').scrollIntoView({behavior: 'smooth'})" class="flex flex-col items-center justify-center text-on-surface-variant hover:text-primary flex-1 py-1 transition-colors">
                 <span class="material-symbols-outlined text-2xl mb-0.5" data-icon="location_on">location_on</span>
                 <span class="text-[10px] font-semibold">Locales</span>
             </button>
@@ -599,38 +675,10 @@
             toggleModal('menu-modal', false);
         }
 
-        // Locations Modal
-        function openLocationsModal(highlightId = '') {
-            toggleModal('locations-modal', true);
-            
-            // Clear previous highlights
-            ['gascona', 'florida', 'parrilla'].forEach(id => {
-                const card = document.getElementById(`card-local-${id}`);
-                if (card) card.className = "border border-outline-variant/60 rounded-xl p-5 space-y-3 bg-surface-container-lowest transition-all hover:shadow-md";
-            });
-
-            // Highlight specific card if requested
-            if (highlightId) {
-                setTimeout(() => {
-                    const card = document.getElementById(`card-local-${highlightId}`);
-                    if (card) {
-                        card.className = "border-2 border-primary rounded-xl p-5 space-y-3 bg-primary-fixed/10 transition-all shadow-md transform scale-[1.02]";
-                        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                    }
-                }, 100);
-            }
-        }
-        function closeLocationsModal() {
-            toggleModal('locations-modal', false);
-        }
-
         // Select Location from card and open booking
         function selectLocationAndBook(locationVal) {
-            closeLocationsModal();
-            setTimeout(() => {
-                document.getElementById('booking-location').value = locationVal;
-                openBookingModal();
-            }, 300);
+            document.getElementById('booking-location').value = locationVal;
+            openBookingModal();
         }
 
         // Time Slot Selection
@@ -680,9 +728,9 @@
 
             // Map location value to readable name
             const locationNames = {
-                'gascona': 'Calle Gascona (Oviedo)',
-                'florida': 'La Florida (Oviedo)',
-                'parrilla': 'La Parrilla (Crta. Gijón)'
+                'gascona': 'Las Güelas Gascona (Calle Gascona)',
+                'florida': 'Las Güelas La Florida (Paseo de la Florida)',
+                'parrilla': 'Las Güelas Parrilla (Avda. Santander)'
             };
 
             // Populate success screen
